@@ -18,10 +18,11 @@ class HomePage extends StatelessWidget {
           title: Text("Peliculas en cine"),
           actions: [
             IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  showSearch(context: context, delegate: DataSearch());
-                }),
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            ),
           ],
         ),
         body: Container(
