@@ -1,6 +1,6 @@
-# peliculas
+# Peliculas
 
-A new Flutter project.
+Aplicacion de peliculas desarrollada en Flutter.
 
 ## Getting Started
 
