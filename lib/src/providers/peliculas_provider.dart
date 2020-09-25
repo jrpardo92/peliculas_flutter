@@ -9,6 +9,8 @@ class PeliculasProvider {
   String _language = 'es-Es';
   int _popularesPage = 0;
 
+  bool _cargando = false;
+
   List<Pelicula> _populares = new List();
   final _popularesStreamController =
       StreamController<List<Pelicula>>.broadcast();
@@ -43,6 +45,10 @@ class PeliculasProvider {
 
 // metodo para obtener peliculas populares
   Future<List<Pelicula>> getPopulares() async {
+    if (_cargando) return [];
+
+    _cargando = true;
+
     _popularesPage++;
     final url = Uri.https(_url, '3/movie/popular', {
       'api_key': _apikey,
@@ -53,6 +59,7 @@ class PeliculasProvider {
 
     _populares.addAll(resp);
     popularesSink(_populares);
+    _cargando = false;
 
     return resp;
   }

@@ -70,4 +70,12 @@ class Pelicula {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     }
   }
+
+  getBgIMg() {
+    if (posterPath == null) {
+      return 'https://www.capefearhabitat.org/wp-content/plugins/learnpress/assets/images/no-image.png';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+    }
+  }
 }
