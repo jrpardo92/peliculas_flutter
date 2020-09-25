@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:peliculas/src/models/pelicula_model.dart';
 
 class MovieHorizontal extends StatelessWidget {
@@ -39,15 +40,18 @@ class MovieHorizontal extends StatelessWidget {
       // margin: EdgeInsets.only(right: 15.0),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: FadeInImage(
-              image: NetworkImage(
-                pelicula.getPosterImg(),
+          Hero(
+            tag: pelicula.id,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: FadeInImage(
+                image: NetworkImage(
+                  pelicula.getPosterImg(),
+                ),
+                placeholder: AssetImage('assets/img/no-image.jpg'),
+                fit: BoxFit.cover,
+                height: 160.0,
               ),
-              placeholder: AssetImage('assets/img/no-image.jpg'),
-              fit: BoxFit.cover,
-              height: 160.0,
             ),
           ),
           SizedBox(
@@ -63,6 +67,7 @@ class MovieHorizontal extends StatelessWidget {
     );
     return GestureDetector(
       onTap: () {
+        timeDilation = 1.8;
         Navigator.pushNamed(context, 'detalle', arguments: pelicula);
       },
       child: tarjeta,
