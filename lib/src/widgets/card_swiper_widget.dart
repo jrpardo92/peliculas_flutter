@@ -11,13 +11,13 @@ class CardSwiper extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-      // padding: EdgeInsets.only(top: 10),
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return Hero(
-            tag: peliculas[index].id,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, 'detalle',
+                  arguments: peliculas[index]),
               child: FadeInImage(
                 placeholder: AssetImage('assets/img/no-image.jpg'),
                 image: NetworkImage(
